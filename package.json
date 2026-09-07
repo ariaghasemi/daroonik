@@ -3,15 +3,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "build:pages": "node scripts/pages-build.mjs",
+    "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build.mjs --pages",
+    "build:node": "node scripts/build.mjs --node",
     "start": "next start",
     "preview:pages": "npx wrangler pages dev out --ip 0.0.0.0 --port 8788",
+    "fonts:build": "node scripts/build-fonts.mjs",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio",
-    "fonts:build": "node scripts/build-fonts.mjs"
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "dotenv": "17.3.1",

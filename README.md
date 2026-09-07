@@ -50,8 +50,9 @@ npm run typecheck         # tsc --noEmit
 | دستور | کار |
 | --- | --- |
 | `npm run dev` | سرور توسعه Next (شامل `/api/*`) |
-| `npm run build` | بیلد نود-سرور (برای VPS/کانتینر + Postgres) |
-| `npm run build:pages` | بیلد استاتیک `out/` برای Cloudflare Pages (موقت `src/app/api` را پارک و برمی‌گرداند) |
+| `npm run build` | هوشمند: اگر `CF_PAGES=1` باشد (یعنی داخل پایپ‌لاین Cloudflare Pages) بیلد استاتیک `out/` می‌گیرد، وگرنه بیلد نود-سرور برای VPS/کانتینر + Postgres |
+| `npm run build:pages` | زورکی بیلد استاتیک `out/` (اسکریپت `src/app/api` را موقت پارک و برمی‌گرداند، چون route handler با `output: export` نمی‌سازد) |
+| `npm run build:node` | زورکی بیلد نود-سرور، حتی روی Pages |
 | `npm run preview:pages` | سرو کردن `out/` با `wrangler pages dev` (همان رفتار Pages: Pretty URLs، `404.html`، `_headers`) |
 | `npm run fonts:build` | تبدیل TTF → woff2 در `src/fonts` |
 | `npm run db:push` | ساخت جدول‌ها روی PostgreSQL (فقط وقتی دیتابیس وصل است) |
@@ -69,7 +70,7 @@ npm run typecheck         # tsc --noEmit
    | فیلد | مقدار |
    | --- | --- |
    | Framework preset | **`None` / `Other`** (پیش‌تنظیم `Next.js` دستور `next build` را تحمیل می‌کند و بیلد استاتیک ساخته نمی‌شود) |
-   | Build command | `npm run build:pages` |
+   | Build command | `npm run build:pages` (یا `npm run build` — خودش Pages را تشخیص می‌دهد) |
    | Build output directory | `out` |
    | Root directory | `/` (ریشه‌ی ریپو) |
 
@@ -160,7 +161,8 @@ scripts/              pages-build.mjs (بیلد Pages)، build-fonts.mjs
 | مشکل | راه‌حل |
 | --- | --- |
 | بیلد Pages خطای `output: export` می‌دهد | از `npm run build:pages` استفاده کنید (نه `next build` خالی)؛ این اسکریپت `/api` را پارک می‌کند |
-| در لاگ Pages ردیف‌های `ƒ /api/...` دیده می‌شود | یعنی Pages دستور `npm run build` را اجرا کرده (حالت Node) و `out/` ساخته نشده. Build command را به `npm run build:pages` تغییر دهید. از این به بعد چنین بیلدی با پیام روشن شکست می‌خورد (نگهبان داخل `next.config.ts`) |
+| بیلد Pages با پیام `Cloudflare Pages build detected, but this is not a static export` می‌شکند | یعنی دستور بیلد به `next build` خام تغییر کرده. آن را به `npm run build:pages` برگردانید (یا `npm run build`: خودش `CF_PAGES=1` را می‌بیند و استاتیک می‌گیرد) |
+| در لاگ Pages ردیف‌های `ƒ /api/...` دیده می‌شود | بیلد، حالت Node گرفته (پس `out/` ساخته نشده)؛ `Build output directory` باید `out` و دستور بیلد `npm run build:pages` باشد |
 | سایت خالی یا ۴۰۴ می‌دهد درحالی‌که بیلد سبز است | Build output directory باید دقیقاً `out` باشد و Framework preset روی `None` |
 | صفحه‌ای ۴۰۴ شد ولی لینکش داخل سایت کار می‌کند | مسیر داینامیک فقط برای slugهای موجود در `generateStaticParams` ساخته می‌شود؛ slug جدید را به دیتا اضافه کنید و دوباره بیلد بگیرید |
 | فونت روی سرور اعمال نشده | `npm run fonts:build` را اجرا کنید تا woff2‌ها ساخته شوند |
