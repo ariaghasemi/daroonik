@@ -68,7 +68,7 @@ npm run typecheck         # tsc --noEmit
 
    | فیلد | مقدار |
    | --- | --- |
-   | Framework preset | `Next.js` (یا `None` — فرقی نمی‌کند) |
+   | Framework preset | **`None` / `Other`** (پیش‌تنظیم `Next.js` دستور `next build` را تحمیل می‌کند و بیلد استاتیک ساخته نمی‌شود) |
    | Build command | `npm run build:pages` |
    | Build output directory | `out` |
    | Root directory | `/` (ریشه‌ی ریپو) |
@@ -77,7 +77,7 @@ npm run typecheck         # tsc --noEmit
 
    | کلید | مقدار |
    | --- | --- |
-   | `NODE_VERSION` | `22` |
+   | `NODE_VERSION` | `22` (فایل `.node-version` هم در ریشه اضافه شده) |
    | `NEXT_PUBLIC_SITE_URL` | `https://darunik.pages.dev` (آدرس نهایی پروژه‌تان) |
 
 5. **Save and Deploy**. بعد از حدود ۱–۲ دقیقه، دامنه‌ی `https://<project-name>.pages.dev` فعال است.
@@ -160,6 +160,8 @@ scripts/              pages-build.mjs (بیلد Pages)، build-fonts.mjs
 | مشکل | راه‌حل |
 | --- | --- |
 | بیلد Pages خطای `output: export` می‌دهد | از `npm run build:pages` استفاده کنید (نه `next build` خالی)؛ این اسکریپت `/api` را پارک می‌کند |
+| در لاگ Pages ردیف‌های `ƒ /api/...` دیده می‌شود | یعنی Pages دستور `npm run build` را اجرا کرده (حالت Node) و `out/` ساخته نشده. Build command را به `npm run build:pages` تغییر دهید. از این به بعد چنین بیلدی با پیام روشن شکست می‌خورد (نگهبان داخل `next.config.ts`) |
+| سایت خالی یا ۴۰۴ می‌دهد درحالی‌که بیلد سبز است | Build output directory باید دقیقاً `out` باشد و Framework preset روی `None` |
 | صفحه‌ای ۴۰۴ شد ولی لینکش داخل سایت کار می‌کند | مسیر داینامیک فقط برای slugهای موجود در `generateStaticParams` ساخته می‌شود؛ slug جدید را به دیتا اضافه کنید و دوباره بیلد بگیرید |
 | فونت روی سرور اعمال نشده | `npm run fonts:build` را اجرا کنید تا woff2‌ها ساخته شوند |
 | آدرس در sitemap/canonical غلط است | `NEXT_PUBLIC_SITE_URL` را در Pages ست و Redeploy بزنید |
