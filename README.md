@@ -13,7 +13,7 @@ Cloudflare Pages** بالا بیاید.
 
 | مورد | وضعیت |
 | --- | --- |
-| فریم‌ورک | **Next.js 16 (App Router)** + React 19 — نه Vite، نه Create React App |
+| فریم‌ورک | **Next.js 16.3 (App Router)** + React 19 — نه Vite، نه Create React App |
 | زبان | TypeScript (strict) |
 | استایل | **Tailwind CSS v4** (از طریق `@tailwindcss/postcss`، بدون `tailwind.config.js`) |
 | فونت | `next/font/local` + فایل‌های woff2 خودمیزبان در `src/fonts` |
@@ -21,6 +21,8 @@ Cloudflare Pages** بالا بیاید.
 | دیتابیس (اختیاری) | Drizzle ORM + PostgreSQL |
 | پکیج‌منیجر | npm (فایل `package-lock.json` موجود است؛ Pages همان را استفاده می‌کند) |
 | بیلد برای Pages | `next build` با `output: "export"` → پوشه‌ی `out/` |
+
+> نسخه‌ی Next روی `16.3.4` قفل شده تا چهار advisory پرخطر (`next` ≤16.2.6: bypass middleware و DoS در Server Actions) رفع شود؛ `npm audit --omit=dev` روی این مخزن پاک است.
 
 **چرا Vite نه؟** چون خروجی برنامه یک اپ Next.js با Server Components است. ابزار بیلد، خودِ
 `next build` است و در Cloudflare Pages فقط باید بگویید خروجی از `out/` برداشته شود. هیچ
