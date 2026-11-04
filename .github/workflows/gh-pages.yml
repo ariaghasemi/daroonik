@@ -2,11 +2,15 @@ name: Build and deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [arena/f78318db-daroonik]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+env:
+  BASE_PATH: /daroonik
+  NEXT_PUBLIC_SITE_URL: https://ariaghasemi.github.io/daroonik
 
 jobs:
   build-deploy:
@@ -24,16 +28,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Fully prerendered static export → `out/`. Works on any static host, including GitHub Pages.
       - name: Build static site
         run: npm run build:pages
-        env:
-          # Canonical URL used in sitemap/metadata. Adjust for your domain:
-          # NEXT_PUBLIC_SITE_URL: https://ariaghasemi.github.io/daroonik
-          # Hosting under a project subpath? (e.g. https://user.github.io/repo/)
-          # BASE_PATH: /daroonik
 
-      - name: Opt out of Jekyll (plain HTML site)
+      - name: Opt out of Jekyll
         run: touch out/.nojekyll
 
       - name: Publish `out/` to the gh-pages branch
