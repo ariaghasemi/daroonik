@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "@/components/icons";
@@ -67,7 +67,7 @@ export function HeroSlider() {
             )}
             aria-hidden={idx !== i}
           >
-            <Image
+            <BasePathImage
               src={s.image}
               alt={s.title.replace("\n", " ")}
               fill

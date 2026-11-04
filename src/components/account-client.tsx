@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import { useState } from "react";
 import { useCart } from "@/components/cart-context";
 import { ProductGrid, type CardProduct } from "@/components/product-card";
@@ -89,7 +89,7 @@ export function CompareView({ products }: { products: (CardProduct & { specs: { 
             <th className="w-32 text-right" />
             {items.map((p) => (
               <th key={p.slug} className="p-2 text-center align-top">
-                <Image src={p.image} alt={p.name} width={90} height={90} className="mx-auto h-[90px] w-[90px] object-contain" />
+                <BasePathImage src={p.image} alt={p.name} width={90} height={90} className="mx-auto h-[90px] w-[90px] object-contain" />
                 <Link href={`/product/${p.slug}`} className="mt-2 block text-[12.5px] font-bold hover:text-brand-600">
                   {p.name}
                 </Link>

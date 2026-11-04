@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/cart-context";
@@ -70,7 +70,7 @@ export function CartClient() {
             {lines.map((l) => (
               <article key={l.slug + (l.variant ?? "")} className="card flex gap-3 p-3">
                 <Link href={`/product/${l.slug}`} className="shrink-0">
-                  <Image src={l.image} alt={l.name} width={96} height={96} className="h-24 w-24 rounded-xl object-contain" />
+                  <BasePathImage src={l.image} alt={l.name} width={96} height={96} className="h-24 w-24 rounded-xl object-contain" />
                 </Link>
                 <div className="flex flex-1 flex-col">
                   <Link href={`/product/${l.slug}`} className="text-[13.5px] font-bold leading-7 hover:text-brand-600">

@@ -44,6 +44,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   body {
     background: #f4f7f9;
@@ -51,6 +52,14 @@
     font-family: var(--font-sans);
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* Keep any image/video inside the viewport even in narrow screens */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
   }
   h1,
   h2,

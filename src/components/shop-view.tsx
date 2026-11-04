@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
@@ -108,7 +108,7 @@ function ListingView(props: ShopViewProps, sp: Query) {
       {banner && (
         <div className="relative mb-4 overflow-hidden rounded-2xl">
           <div className="relative aspect-[16/6] w-full sm:aspect-[5/1]">
-            <Image src={banner.image} alt={banner.title} fill sizes="100vw" className="object-cover" priority />
+            <BasePathImage src={banner.image} alt={banner.title} fill sizes="100vw" className="object-cover" priority />
             <div
               className={
                 banner.theme === "light"
@@ -152,7 +152,7 @@ function ListingView(props: ShopViewProps, sp: Query) {
 
       <div className="grid gap-4 lg:grid-cols-[260px_1fr]">
         <FiltersPanel brands={facets} maxPrice={maxPrice} query={sp} />
-        <div>
+        <div className="min-w-0">
           <SortBar total={filtered.length} defaultSort={defaultSort} query={sp} />
           {pageItems.length === 0 ? (
             <EmptyState

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { BlogIcon } from "@/components/icons";
@@ -40,7 +40,7 @@ export default async function BlogPage() {
 
       <article className="card mt-5 grid overflow-hidden md:grid-cols-2">
         <Link href={`/blog/${featured.slug}`} className="relative aspect-[16/9] md:aspect-auto">
-          <Image src={featured.cover} alt={featured.title} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" priority />
+          <BasePathImage src={featured.cover} alt={featured.title} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover" priority />
         </Link>
         <div className="p-5">
           <span className="badge gap-1.5 bg-brand-50 text-brand-700">
@@ -66,7 +66,7 @@ export default async function BlogPage() {
             <article key={post.slug} className="card group overflow-hidden">
               <Link href={`/blog/${post.slug}`}>
                 <div className="relative aspect-[16/9]">
-                  <Image src={post.cover} alt={post.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <BasePathImage src={post.cover} alt={post.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span className="absolute right-3 top-3 rounded-lg bg-white/95 px-2 py-1 text-[10px] font-black text-brand-700">
                     {post.categoryTitle}
                   </span>

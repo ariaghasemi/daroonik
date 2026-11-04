@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { HeroSlider, Countdown } from "@/components/home-client";
@@ -73,7 +73,7 @@ export default async function HomePage() {
             <span className="relative z-10 mt-3 w-fit rounded-lg bg-white/15 px-2.5 py-1 text-[11px] font-bold">
               خرید با گارانتی
             </span>
-            <Image
+            <BasePathImage
               src="/images/banner-devices.webp"
               alt="تجهیزات پزشکی خانگی"
               fill
@@ -92,7 +92,7 @@ export default async function HomePage() {
             <span className="relative z-10 mt-3 w-fit rounded-lg bg-white px-2.5 py-1 text-[11px] font-bold text-brand-700">
               مشاهده محصولات
             </span>
-            <Image
+            <BasePathImage
               src="/images/banner-mom.webp"
               alt="محصولات مادر و کودک"
               fill
@@ -159,7 +159,7 @@ export default async function HomePage() {
           href="/category/sports-supplements/protein"
           className="group relative flex min-h-[170px] flex-col justify-center overflow-hidden rounded-2xl bg-[#07301f] p-5 text-white md:col-span-2"
         >
-          <Image
+          <BasePathImage
             src="/images/hero-sports.webp"
             alt="بنر مکمل‌های ورزشی"
             fill
@@ -181,7 +181,7 @@ export default async function HomePage() {
           href="/category/skin-care/sunscreen"
           className="group relative flex min-h-[170px] flex-col justify-center overflow-hidden rounded-2xl bg-[#fdf1ec] p-5"
         >
-          <Image
+          <BasePathImage
             src="/images/hero-skincare.webp"
             alt="بنر ضدآفتاب و مراقبت پوست"
             fill
@@ -287,7 +287,7 @@ export default async function HomePage() {
             <article key={post.slug} className="card group overflow-hidden">
               <Link href={`/blog/${post.slug}`} className="block">
                 <div className="relative aspect-[16/9]">
-                  <Image
+                  <BasePathImage
                     src={post.cover}
                     alt={post.title}
                     fill

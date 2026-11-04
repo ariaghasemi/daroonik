@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import { useEffect, useState } from "react";
 import { ChevronLeft, Close } from "@/components/icons";
 import { SITE } from "@/lib/utils";
@@ -32,7 +32,7 @@ export function DeveloperPopup() {
           className="animate-pop w-[290px] rounded-2xl border border-line bg-white p-3 shadow-[var(--shadow-pop)] sm:w-[330px]"
         >
           <div className="flex items-start gap-3">
-            <Image
+            <BasePathImage
               src="/images/aria-ghasemi.webp"
               alt="آریا قاسمی، طراح و توسعه‌دهنده این نمونه‌کار"
               width={64}
@@ -70,7 +70,7 @@ export function DeveloperPopup() {
           aria-label="نمایش اطلاعات سازنده نمونه‌کار"
           className="group flex items-center gap-2 rounded-full border border-line bg-white/95 py-1.5 pl-3 pr-1.5 shadow-[var(--shadow-soft)] backdrop-blur transition hover:shadow-[var(--shadow-pop)]"
         >
-          <Image
+          <BasePathImage
             src="/images/aria-ghasemi.webp"
             alt="آریا قاسمی"
             width={28}

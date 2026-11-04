@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useCart } from "@/components/cart-context";
@@ -78,7 +78,7 @@ export function ProductView({
         {/* gallery */}
         <div>
           <div className="relative mx-auto aspect-square w-full max-w-[360px] overflow-hidden rounded-2xl bg-white">
-            <Image
+            <BasePathImage
               src={p.gallery[imgIndex]}
               alt={`${p.name} - تصویر ${toFa(imgIndex + 1)}`}
               fill
@@ -103,7 +103,7 @@ export function ProductView({
                   i === imgIndex ? "border-brand-500" : "border-line hover:border-brand-300",
                 )}
               >
-                <Image src={g} alt="" fill sizes="64px" className="object-contain" />
+                <BasePathImage src={g} alt="" fill sizes="64px" className="object-contain" />
               </button>
             ))}
           </div>

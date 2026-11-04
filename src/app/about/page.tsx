@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ChevronLeft } from "@/components/icons";
@@ -17,7 +17,7 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ title: "درباره ما" }]} />
       <div className="card overflow-hidden">
         <div className="relative aspect-[16/6]">
-          <Image src="/images/hero-vitamins.webp" alt="فروشگاه اینترنتی سلامت دارونیک" fill sizes="100vw" className="object-cover" priority />
+          <BasePathImage src="/images/hero-vitamins.webp" alt="فروشگاه اینترنتی سلامت دارونیک" fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-white/85" />
           <div className="absolute inset-y-0 right-0 flex max-w-[520px] flex-col justify-center p-6">
             <h1 className="text-[22px] leading-10 md:text-[28px]">دارونیک؛ داروخانه آنلاین تخصصی سلامت</h1>
@@ -74,7 +74,7 @@ export default function AboutPage() {
       <div className="card mt-4 overflow-hidden">
         <div className="grid gap-0 md:grid-cols-[220px_1fr]">
           <div className="relative aspect-[3/4] md:aspect-auto">
-            <Image
+            <BasePathImage
               src="/images/aria-ghasemi-portrait.webp"
               alt="آریا قاسمی، طراح و توسعه‌دهنده این نمونه‌کار"
               fill

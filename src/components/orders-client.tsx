@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -38,7 +38,7 @@ export function OrderDetailCard({ order }: { order: DemoOrder }) {
         <ul className="space-y-2">
           {order.items.map((it) => (
             <li key={it.slug} className="flex items-center gap-3 rounded-xl border border-line p-2">
-              <Image
+              <BasePathImage
                 src={it.image}
                 alt={it.name}
                 width={56}

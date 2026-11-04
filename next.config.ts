@@ -14,6 +14,9 @@ import type { NextConfig } from "next";
  *    Postgres reads/writes through Drizzle when `DATABASE_URL` is set.
  */
 const staticExport = process.env.STATIC_EXPORT === "1";
+// Optional base path, e.g. BASE_PATH=/daroonik when the site is hosted under a GitHub Pages
+// project subpath (https://user.github.io/repo/). Leave unset for root/custom-domain hosting.
+const basePath = process.env.BASE_PATH || undefined;
 
 // Cloudflare Pages sets CF_PAGES=1, and `npm run build` dispatches to the static export when it
 // sees it (scripts/build.mjs). Reaching Next on Pages *without* STATIC_EXPORT=1 therefore means
@@ -52,5 +55,6 @@ const nextConfig: NextConfig = {
       }),
   poweredByHeader: false,
 };
+if (basePath) nextConfig.basePath = basePath;
 
 export default nextConfig;

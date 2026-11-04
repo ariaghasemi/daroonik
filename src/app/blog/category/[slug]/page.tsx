@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -53,7 +53,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ s
               <article key={post.slug} className="card group overflow-hidden">
                 <Link href={`/blog/${post.slug}`}>
                   <div className="relative aspect-[16/9]">
-                    <Image src={post.cover} alt={post.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
+                    <BasePathImage src={post.cover} alt={post.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
                   </div>
                   <div className="p-4">
                     <h2 className="line-clamp-2 text-[14px] leading-7 group-hover:text-brand-600">{post.title}</h2>

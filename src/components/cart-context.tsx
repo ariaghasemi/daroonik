@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import {
   createContext,
@@ -259,7 +259,7 @@ function MiniCart() {
               )}
               {lines.map((l) => (
                 <div key={l.slug + (l.variant ?? "")} className="flex gap-3 rounded-xl border border-line p-2">
-                  <Image src={l.image} alt={l.name} width={64} height={64} className="h-16 w-16 rounded-lg object-contain" />
+                  <BasePathImage src={l.image} alt={l.name} width={64} height={64} className="h-16 w-16 rounded-lg object-contain" />
                   <div className="flex flex-1 flex-col gap-1">
                     <Link
                       href={`/product/${l.slug}`}

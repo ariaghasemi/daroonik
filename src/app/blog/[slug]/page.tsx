@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -74,7 +74,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="grid gap-4 lg:grid-cols-[1fr_300px]">
         <article className="card overflow-hidden">
           <div className="relative aspect-[16/8]">
-            <Image src={post.cover} alt={post.title} fill sizes="(max-width:1024px) 100vw, 800px" priority className="object-cover" />
+            <BasePathImage src={post.cover} alt={post.title} fill sizes="(max-width:1024px) 100vw, 800px" priority className="object-cover" />
           </div>
           <div className="p-5 md:p-7">
             <span className="badge gap-1.5 bg-brand-50 text-brand-700">
@@ -169,7 +169,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               {related.map((r) => (
                 <li key={r.slug}>
                   <Link href={`/blog/${r.slug}`} className="flex gap-2">
-                    <Image src={r.cover} alt={r.title} width={64} height={48} className="h-12 w-16 rounded-lg object-cover" />
+                    <BasePathImage src={r.cover} alt={r.title} width={64} height={48} className="h-12 w-16 rounded-lg object-cover" />
                     <span className="line-clamp-2 text-[12.5px] font-bold leading-6 hover:text-brand-600">{r.title}</span>
                   </Link>
                 </li>

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useCart } from "@/components/cart-context";
 import { Compare, Heart, HeartFilled, Plus } from "@/components/icons";
@@ -33,7 +33,7 @@ export function ProductCard({ p, compact = false }: { p: CardProduct; compact?: 
     <article
       className={cx(
         "group relative flex flex-col rounded-2xl border border-transparent bg-white p-3 transition-all duration-200 hover:border-brand-200 hover:shadow-[0_10px_30px_rgba(20,33,46,0.10)]",
-        compact ? "min-w-[168px]" : "",
+        compact ? "min-w-[168px]" : "min-w-0",
       )}
     >
       <div className="absolute right-3 top-3 z-10 flex flex-col gap-1">
@@ -79,7 +79,7 @@ export function ProductCard({ p, compact = false }: { p: CardProduct; compact?: 
 
       <Link href={`/product/${p.slug}`} className="block" tabIndex={-1} aria-hidden="true">
         <div className="relative mx-auto aspect-square w-full max-w-[190px] overflow-hidden rounded-xl">
-          <Image
+          <BasePathImage
             src={p.image}
             alt={p.name}
             fill

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -206,7 +206,7 @@ export function Header({
                               onClick={() => setFocus(false)}
                               className="flex items-center gap-3 rounded-xl p-2 hover:bg-surface"
                             >
-                              <Image src={p.image} alt={p.name} width={44} height={44} className="h-11 w-11 rounded-lg object-contain" />
+                              <BasePathImage src={p.image} alt={p.name} width={44} height={44} className="h-11 w-11 rounded-lg object-contain" />
                               <span className="line-clamp-1 flex-1 text-[13px] font-bold">{p.name}</span>
                               <span className="num shrink-0 text-[12px] font-bold text-ink-500">
                                 {formatPrice(p.price)}

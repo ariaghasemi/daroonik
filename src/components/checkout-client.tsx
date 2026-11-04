@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { BasePathImage } from "@/components/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -268,7 +268,7 @@ export function CheckoutClient({ provinces }: { provinces: string[] }) {
           <ul className="mb-3 max-h-56 space-y-2 overflow-y-auto">
             {lines.map((l) => (
               <li key={l.slug + (l.variant ?? "")} className="flex items-center gap-2">
-                <Image src={l.image} alt={l.name} width={40} height={40} className="h-10 w-10 rounded-lg object-contain" />
+                <BasePathImage src={l.image} alt={l.name} width={40} height={40} className="h-10 w-10 rounded-lg object-contain" />
                 <span className="line-clamp-1 flex-1 text-[12px] font-bold">{l.name}</span>
                 <span className="num text-[11px] text-ink-500">×{toFa(l.qty)}</span>
               </li>
