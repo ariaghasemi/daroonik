@@ -11,6 +11,7 @@ permissions:
 env:
   BASE_PATH: /daroonik
   NEXT_PUBLIC_SITE_URL: https://ariaghasemi.github.io/daroonik
+  NODE_OPTIONS: --max-old-space-size=3072
 
 jobs:
   build-deploy:
