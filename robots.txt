@@ -6,5 +6,5 @@ Disallow: /checkout
 Disallow: /cart
 Disallow: /search
 
-Host: https://darunik.pages.dev
-Sitemap: https://darunik.pages.dev/sitemap.xml
+Host: https://ariaghasemi.github.io/daroonik
+Sitemap: https://ariaghasemi.github.io/daroonik/sitemap.xml
