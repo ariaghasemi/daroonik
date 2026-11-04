@@ -75,7 +75,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   };
 
   return (
-    <html lang="fa" dir="rtl" className={fontVariables}>
+    <html lang="fa" dir="rtl" className={`${fontVariables} overflow-x-hidden`}>
       <body className="antialiased">
         <a
           href="#main"

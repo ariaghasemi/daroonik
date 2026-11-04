@@ -152,7 +152,7 @@ function ListingView(props: ShopViewProps, sp: Query) {
 
       <div className="grid gap-4 lg:grid-cols-[260px_1fr]">
         <FiltersPanel brands={facets} maxPrice={maxPrice} query={sp} />
-        <div>
+        <div className="min-w-0">
           <SortBar total={filtered.length} defaultSort={defaultSort} query={sp} />
           {pageItems.length === 0 ? (
             <EmptyState
