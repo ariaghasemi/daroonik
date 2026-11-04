@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+.open-next/
+.static-build/
+.wrangler/
+.env
+.env.local
+.env*.local
+*.tsbuildinfo
+.DS_Store
+.vercel/
+dist/
+coverage/
+npm-debug.log*
