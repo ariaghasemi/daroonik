@@ -2,11 +2,11 @@ name: Build and deploy static site to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [arena/f78318db-daroonik]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build-deploy:
