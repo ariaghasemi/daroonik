@@ -24,11 +24,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # متغیرهای اختیاری (فقط در صورت نیاز، در Repository Secrets یا workflow env ست کنید):
+      # NEXT_PUBLIC_SITE_URL — آدرس نهایی برای sitemap/canonical/og:image
+      # BASE_PATH — مثلاً /daroonik اگر سایت زیر مسیر است
       - name: Build static site
         run: npm run build:pages
-        env:
-          # NEXT_PUBLIC_SITE_URL: https://ariaghasemi.github.io/daroonik
-          # BASE_PATH: /daroonik   # فقط اگر سایت زیر مسیر است
 
       - name: Opt out of Jekyll
         run: touch out/.nojekyll
