@@ -1,0 +1,40 @@
+name: Build Static Site (for manual cPanel upload)
+
+on:
+  push:
+    branches: [arena/f78318db-daroonik]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  BASE_PATH: /daroonik
+  NEXT_PUBLIC_SITE_URL: https://demo.ariagh.ir/daroonik
+  NODE_OPTIONS: --max-old-space-size=3072
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build:pages
+
+      - name: Upload build output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daroonik-static-site
+          path: ./out
+          retention-days: 7
